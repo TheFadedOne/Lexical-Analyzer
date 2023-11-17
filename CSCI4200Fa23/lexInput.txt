@@ -1,8 +1,4 @@
 PROGRAM
-read(count);
-total = 25
-if (count) then average = total/count;
- Area = (length+width) * 2
-C = age - 5 * (D / C);
-print(C+Area);
+ sumTotal = (sum + 47 ) /;
+ Area=PI * Radius * Radius; 
 END
