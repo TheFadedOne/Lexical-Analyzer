@@ -92,13 +92,6 @@ public class Lex {
 			
 			scan.close();
 		}
-
-		// Exceptions / errors are printed to terminal and to output file
-//		catch (CustomException ce) {
-//			System.out.println(ce.getMessage() + "\n");
-//			myOutput.write(ce.getMessage());
-//		}
-
 		catch (FileNotFoundException e) {
 			System.out.println("Cannot find file OR Problem with output file creation.");
 			myOutput.write("Cannot find file OR Problem with output file creation." + "\n");
@@ -146,6 +139,10 @@ public class Lex {
 	}
 
 	
+	/*
+	 * This method takes the array of strings that represent individual lexemes.
+	 * Then matches each lexeme to a token
+	 */
 	public static void findTokens(String[] lexList) {
 		
 		for (int currLex = 0; currLex < lexList.length; ++currLex) {
@@ -204,7 +201,6 @@ public class Lex {
 			{
 				nextToken = Token.UNKNOWN;
 			}
-			
 			// print the token and lexeme for each lexeme
 			try {
 				printTokenAndLexeme();
@@ -216,6 +212,9 @@ public class Lex {
 	}
 	
 	
+	/*
+	 * Prints out the token and lexeme value
+	 */
 	public static void printTokenAndLexeme() throws IOException {
 		
 		System.out.printf("Next token is: %-18s Next lexeme is %s\n", String.valueOf(nextToken), String.valueOf(lexeme));
