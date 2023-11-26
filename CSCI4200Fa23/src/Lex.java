@@ -55,7 +55,7 @@ public class Lex {
 	    myOutput = new FileWriter("lexOutput.txt");
 
 		// Print Header Info to Terminal and Output File
-		String headerInfo = "Andrew Blackwell, CSCI4200, Spring 2023, Lexical Analyzer";
+		String headerInfo = "Andrew Blackwell, CSCI4200, Fall 2023, Lexical Analyzer";
 		String headerAsterisks = "*".repeat(80);
 		System.out.print(headerInfo + "\n"); 
 		myOutput.write(headerInfo + "\n");
@@ -79,6 +79,7 @@ public class Lex {
 					line = spaceOutLexemes(line);
 					lexemeList = line.split(" ");
 					findTokens(lexemeList);
+					myOutput.write("\n");
 				}
 			}
 
