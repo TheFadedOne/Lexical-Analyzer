@@ -78,7 +78,7 @@ public class Lex {
 					// Take the line and add spaces where appropriate so that split function can be used.
 					line = spaceOutLexemes(line);
 					lexemeList = line.split(" ");
-					findTokens(lexemeList);
+					printTokensAndLexemes(lexemeList);
 					myOutput.write("\n");
 				}
 			}
@@ -144,81 +144,82 @@ public class Lex {
 	 * This method takes the array of strings that represent individual lexemes.
 	 * Then matches each lexeme to a token
 	 */
-	public static void findTokens(String[] lexList) {
+	public static void matchLexemeToToken(String lexeme) {
 		
-		for (int currLex = 0; currLex < lexList.length; ++currLex) {
-			
-			lexeme = lexList[currLex];
-			if (lexList[currLex].matches("[0-9]+")) {
-				nextToken = Token.INT_LIT;
-			} 
-			else if (lexList[currLex].matches("=")) {
-				nextToken = Token.ASSIGN_OP;
-			} 
-			else if (lexList[currLex].matches("\\+")) {
-				nextToken = Token.ADD_OP;
-			}
-			else if (lexList[currLex].matches("\\-")) {
-				nextToken = Token.SUB_OP;
-			}
-			else if (lexList[currLex].matches("\\*")) {
-				nextToken = Token.MULT_OP;
-			}
-			else if (lexList[currLex].matches("\\/")) {
-				nextToken = Token.DIV_OP;
-			}
-			else if (lexList[currLex].matches("\\(")) {
-				nextToken = Token.LEFT_PAREN;
-			}
-			else if (lexList[currLex].matches("\\)")) {
-				nextToken = Token.RIGHT_PAREN;
-			}
-			else if (lexList[currLex].matches("END")) {
-				nextToken = Token.END_KEYWORD;
-			}
-			else if (lexList[currLex].matches("print")) {
-				nextToken = Token.PRINT_KEYWORD;
-			}
-			else if (lexList[currLex].matches("PROGRAM")) {
-				nextToken = Token.PROGRAM_KEYWORD;
-			}
-			else if (lexList[currLex].matches(";")) {
-				nextToken = Token.SEMICOLON;
-			}
-			else if (lexList[currLex].matches("if")) {
-				nextToken = Token.IF_KEYWORD;
-			}
-			else if (lexList[currLex].matches("read")) {
-				nextToken = Token.READ_KEYWORD;
-			}
-			else if (lexList[currLex].matches("then")) {
-				nextToken = Token.THEN_KEYWORD;
-			}
-			//The IDENT Token is at the end, so we can check for if, then, end, print, program and read keywords first
-			else if (lexList[currLex].matches("[a-zA-Z]+")) {
-				nextToken = Token.IDENT;
-			} 
-			else 
-			{
-				nextToken = Token.UNKNOWN;
-			}
-			// print the token and lexeme for each lexeme
-			try {
-				printTokenAndLexeme();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		if (lexeme.matches("[0-9]+")) {
+			nextToken = Token.INT_LIT;
+		} 
+		else if (lexeme.matches("=")) {
+			nextToken = Token.ASSIGN_OP;
+		} 
+		else if (lexeme.matches("\\+")) {
+			nextToken = Token.ADD_OP;
 		}
-		System.out.println();
+		else if (lexeme.matches("\\-")) {
+			nextToken = Token.SUB_OP;
+		}
+		else if (lexeme.matches("\\*")) {
+			nextToken = Token.MULT_OP;
+		}
+		else if (lexeme.matches("\\/")) {
+			nextToken = Token.DIV_OP;
+		}
+		else if (lexeme.matches("\\(")) {
+			nextToken = Token.LEFT_PAREN;
+		}
+		else if (lexeme.matches("\\)")) {
+			nextToken = Token.RIGHT_PAREN;
+		}
+		else if (lexeme.matches("END")) {
+			nextToken = Token.END_KEYWORD;
+		}
+		else if (lexeme.matches("print")) {
+			nextToken = Token.PRINT_KEYWORD;
+		}
+		else if (lexeme.matches("PROGRAM")) {
+			nextToken = Token.PROGRAM_KEYWORD;
+		}
+		else if (lexeme.matches(";")) {
+			nextToken = Token.SEMICOLON;
+		}
+		else if (lexeme.matches("if")) {
+			nextToken = Token.IF_KEYWORD;
+		}
+		else if (lexeme.matches("read")) {
+			nextToken = Token.READ_KEYWORD;
+		}
+		else if (lexeme.matches("then")) {
+			nextToken = Token.THEN_KEYWORD;
+		}
+		//The IDENT Token is at the end, so we can check for if, then, end, print, program and read keywords first
+		else if (lexeme.matches("[a-zA-Z]+")) {
+			nextToken = Token.IDENT;
+		} 
+		else 
+		{
+			nextToken = Token.UNKNOWN;
+		}
 	}
 	
 	
 	/*
 	 * Prints out the token and lexeme value
 	 */
-	public static void printTokenAndLexeme() throws IOException {
+	public static void printTokensAndLexemes(String[] lexList) throws IOException {
 		
-		System.out.printf("Next token is: %-18s Next lexeme is %s\n", String.valueOf(nextToken), String.valueOf(lexeme));
-		myOutput.write(String.format("Next token is: %-18s Next lexeme is %s\n", String.valueOf(nextToken), String.valueOf(lexeme)));
+		for (int i = 0; i < lexList.length; ++i) {
+			
+			lexeme = lexList[i];
+			matchLexemeToToken(lexeme);
+			
+			System.out.printf("Next token is: %-18s Next lexeme is %s\n", String.valueOf(nextToken), String.valueOf(lexeme));
+			myOutput.write(String.format("Next token is: %-18s Next lexeme is %s\n", String.valueOf(nextToken), String.valueOf(lexeme)));
+		}
+		System.out.println();
+	}
+	
+	
+	public static void lex() {
+		
 	}
 }
