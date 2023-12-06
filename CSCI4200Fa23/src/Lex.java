@@ -19,6 +19,7 @@ public class Lex {
 
 	static String lexeme;   
 	static String[] lexemeList;
+	static int currLexListIndex;
 	static Token nextToken;
 	static FileWriter myOutput;
 
@@ -43,7 +44,8 @@ public class Lex {
 		END_OF_FILE,
 		IF_KEYWORD,
 		READ_KEYWORD,
-		THEN_KEYWORD
+		THEN_KEYWORD,
+		ELSE_KEYWORD
 	}
  
 	// Driver method
@@ -78,6 +80,7 @@ public class Lex {
 					// Take the line and add spaces where appropriate so that split function can be used.
 					line = spaceOutLexemes(line);
 					lexemeList = line.split(" ");
+					currLexListIndex = 0;
 					printTokensAndLexemes(lexemeList);
 					myOutput.write("\n");
 				}
@@ -191,6 +194,9 @@ public class Lex {
 		else if (lexeme.matches("then")) {
 			nextToken = Token.THEN_KEYWORD;
 		}
+		else if (lexeme.matches("else")) {
+			nextToken = Token.ELSE_KEYWORD;
+		}
 		//The IDENT Token is at the end, so we can check for if, then, end, print, program and read keywords first
 		else if (lexeme.matches("[a-zA-Z]+")) {
 			nextToken = Token.IDENT;
@@ -208,9 +214,7 @@ public class Lex {
 	public static void printTokensAndLexemes(String[] lexList) throws IOException {
 		
 		for (int i = 0; i < lexList.length; ++i) {
-			
-			lexeme = lexList[i];
-			matchLexemeToToken(lexeme);
+			lex();
 			
 			System.out.printf("Next token is: %-18s Next lexeme is %s\n", String.valueOf(nextToken), String.valueOf(lexeme));
 			myOutput.write(String.format("Next token is: %-18s Next lexeme is %s\n", String.valueOf(nextToken), String.valueOf(lexeme)));
@@ -219,7 +223,17 @@ public class Lex {
 	}
 	
 	
-	public static void lex() {
-		
+	/*
+	 * NEW lex function. 
+	 * Gets the lexeme at the current index and matches it to a token. 
+	 * Sets nextToken accordingly
+	 * Increments current lexeme index
+	 */
+	private static void lex() {
+		if (currLexListIndex < lexemeList.length) {
+			lexeme = lexemeList[currLexListIndex];
+			matchLexemeToToken(lexeme);
+			currLexListIndex++;
+		}
 	}
 }

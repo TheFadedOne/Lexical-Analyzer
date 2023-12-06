@@ -10,25 +10,13 @@ Next token is: IDENT              Next lexeme is count
 Next token is: RIGHT_PAREN        Next lexeme is )
 Next token is: SEMICOLON          Next lexeme is ;
 
-total = 250
+total = 205;
 Next token is: IDENT              Next lexeme is total
 Next token is: ASSIGN_OP          Next lexeme is =
-Next token is: INT_LIT            Next lexeme is 250
-
-if (count) then average = total/count;
-Next token is: IF_KEYWORD         Next lexeme is if
-Next token is: LEFT_PAREN         Next lexeme is (
-Next token is: IDENT              Next lexeme is count
-Next token is: RIGHT_PAREN        Next lexeme is )
-Next token is: THEN_KEYWORD       Next lexeme is then
-Next token is: IDENT              Next lexeme is average
-Next token is: ASSIGN_OP          Next lexeme is =
-Next token is: IDENT              Next lexeme is total
-Next token is: DIV_OP             Next lexeme is /
-Next token is: IDENT              Next lexeme is count
+Next token is: INT_LIT            Next lexeme is 205
 Next token is: SEMICOLON          Next lexeme is ;
 
-Area = (length+width) * 2
+Area = (length+width) * 20
 Next token is: IDENT              Next lexeme is Area
 Next token is: ASSIGN_OP          Next lexeme is =
 Next token is: LEFT_PAREN         Next lexeme is (
@@ -37,19 +25,19 @@ Next token is: ADD_OP             Next lexeme is +
 Next token is: IDENT              Next lexeme is width
 Next token is: RIGHT_PAREN        Next lexeme is )
 Next token is: MULT_OP            Next lexeme is *
-Next token is: INT_LIT            Next lexeme is 2
+Next token is: INT_LIT            Next lexeme is 20
 
-C     =          age  - 5 * (Age / C);
+C = age - 15 * (D / 8);
 Next token is: IDENT              Next lexeme is C
 Next token is: ASSIGN_OP          Next lexeme is =
 Next token is: IDENT              Next lexeme is age
 Next token is: SUB_OP             Next lexeme is -
-Next token is: INT_LIT            Next lexeme is 5
+Next token is: INT_LIT            Next lexeme is 15
 Next token is: MULT_OP            Next lexeme is *
 Next token is: LEFT_PAREN         Next lexeme is (
-Next token is: IDENT              Next lexeme is Age
+Next token is: IDENT              Next lexeme is D
 Next token is: DIV_OP             Next lexeme is /
-Next token is: IDENT              Next lexeme is C
+Next token is: INT_LIT            Next lexeme is 8
 Next token is: RIGHT_PAREN        Next lexeme is )
 Next token is: SEMICOLON          Next lexeme is ;
 
@@ -61,6 +49,34 @@ Next token is: ADD_OP             Next lexeme is +
 Next token is: IDENT              Next lexeme is Area
 Next token is: RIGHT_PAREN        Next lexeme is )
 Next token is: SEMICOLON          Next lexeme is ;
+
+if (C) then C = 99;
+Next token is: IF_KEYWORD         Next lexeme is if
+Next token is: LEFT_PAREN         Next lexeme is (
+Next token is: IDENT              Next lexeme is C
+Next token is: RIGHT_PAREN        Next lexeme is )
+Next token is: THEN_KEYWORD       Next lexeme is then
+Next token is: IDENT              Next lexeme is C
+Next token is: ASSIGN_OP          Next lexeme is =
+Next token is: INT_LIT            Next lexeme is 99
+Next token is: SEMICOLON          Next lexeme is ;
+
+if (count) then average = total/count else print(count)
+Next token is: IF_KEYWORD         Next lexeme is if
+Next token is: LEFT_PAREN         Next lexeme is (
+Next token is: IDENT              Next lexeme is count
+Next token is: RIGHT_PAREN        Next lexeme is )
+Next token is: THEN_KEYWORD       Next lexeme is then
+Next token is: IDENT              Next lexeme is average
+Next token is: ASSIGN_OP          Next lexeme is =
+Next token is: IDENT              Next lexeme is total
+Next token is: DIV_OP             Next lexeme is /
+Next token is: IDENT              Next lexeme is count
+Next token is: ELSE_KEYWORD       Next lexeme is else
+Next token is: PRINT_KEYWORD      Next lexeme is print
+Next token is: LEFT_PAREN         Next lexeme is (
+Next token is: IDENT              Next lexeme is count
+Next token is: RIGHT_PAREN        Next lexeme is )
 
 END
 Next token is: END_KEYWORD        Next lexeme is END
